@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+set -e
+
+POSITIONAL_ARGS=()
+
+while [[ $# -gt 0 ]]; do
+  case $1 in
+    -g|--go)
+      GO=YES
+      shift # past argument
+      ;;
+    -*|--*)
+      echo "Unknown option $1"
+      exit 1
+      ;;
+    *)
+      POSITIONAL_ARGS+=("$1") # save positional arg
+      shift # past argument
+      ;;
+  esac
+done
+
+set -- "${POSITIONAL_ARGS[@]}" # restore positional parameters
+
+REPO=$(echo $1 | tr '[:upper:]' '[:lower:]')
+DIR="$HOME/Developer/$REPO"
+
+gh repo clone $REPO $DIR
+
+echo 
+
+if [ "$GO" = "YES" ]; then
+  cd $DIR
+  $SHELL
+fi
