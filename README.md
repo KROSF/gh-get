@@ -2,7 +2,7 @@
 
 ## Description
 
-Github CLI extension
+Github CLI extension to clone all your repos under `$HOME/Developer`
 
 ## Installation
 
