@@ -27,8 +27,6 @@ DIR="$HOME/Developer/$REPO"
 
 gh repo clone $REPO $DIR
 
-echo 
-
 if [ "$GO" = "YES" ]; then
   cd $DIR
   $SHELL
